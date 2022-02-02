@@ -12,18 +12,20 @@
         <activity android:name=".LoginActivity"
             android:screenOrientation="portrait"
             android:launchMode="standard">
-            <intent-filter>
-                <action android:name="android.intent.action.MAIN" />
 
-                <category android:name="android.intent.category.LAUNCHER" />
-            </intent-filter>
         </activity>
         <activity android:name=".MainActivity"
             android:screenOrientation="portrait"
             android:launchMode="standard"/>
         <activity android:name=".SignupActivity"
             android:screenOrientation="portrait"
-            android:launchMode="standard"/>
+            android:launchMode="standard">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
+        </activity>
     </application>
 
 </manifest>

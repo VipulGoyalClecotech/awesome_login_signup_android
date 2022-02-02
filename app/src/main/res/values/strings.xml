@@ -5,5 +5,13 @@
 
     <string name="password">Password</string>
     <string name="enter_password">Enter Password</string>
+    <string name="fullname">Fullname</string>
+    <string name="enter_fullname">Enter Fullname</string>
+    <string name="address">Address</string>
+    <string name="enter_address">Enter Address</string>
+    <string name="confirm_password">Confirm Password</string>
+    <string name="enter_confirm_password">Enter Confirm Password</string>
     <string name="login">LOGIN</string>
+    <string name="signup">SIGNUP</string>
+    <string name="back_to_login">BACK TO LOGIN</string>
 </resources>
