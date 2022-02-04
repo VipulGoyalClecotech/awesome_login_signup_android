@@ -24,7 +24,7 @@ import androidx.databinding.DataBindingUtil
 import androidx.databinding.ViewDataBinding
 import androidx.lifecycle.AndroidViewModel
 import com.bhagavad.demoproject.R
-
+import com.bhagavad.demoproject.LoginActivity
 import com.bhagavad.demoproject.toolbar.ToolBarViewModel
 import com.bhagavad.demoproject.util.AppConstants
 import com.bhagavad.demoproject.util.DialogUtil
@@ -42,7 +42,7 @@ abstract class BaseActivity<T : ViewDataBinding, V : AndroidViewModel, N : ToolB
 
     private var mToolBarViewModel: N? = null
 
-    private var TAG = BaseActivity::class.simpleName
+    private var TAG = BaseActivity::class.java.simpleName
 
     var isFullView = false
 
@@ -84,7 +84,7 @@ abstract class BaseActivity<T : ViewDataBinding, V : AndroidViewModel, N : ToolB
             this,
             AppConstants.KEY_LANGUAGE
         )!!
-        if (languageToLoad.equals("")) {
+        if (languageToLoad.isNullOrEmpty()) {
             languageToLoad = "en"
             SessionPreferences.saveStringPref(this, AppConstants.KEY_LANGUAGE, languageToLoad)
         }
@@ -137,6 +137,13 @@ abstract class BaseActivity<T : ViewDataBinding, V : AndroidViewModel, N : ToolB
     abstract fun getToolBarViewModel(): ToolBarViewModel?
 
 
+    /*
+    * get string from edit text
+    * */
+    fun getEtString(et: EditText): String {
+        val str = et.text.toString().trim()
+        return str
+    }
 
 
     /*
@@ -177,6 +184,22 @@ abstract class BaseActivity<T : ViewDataBinding, V : AndroidViewModel, N : ToolB
         }
 
 
+        /*****************
+         * Enable/disable views
+         */
+        //Set enable / disable view  - true means enable else false means disable
+        fun setSelection(view: View, visibility: Boolean) {
+            view.isEnabled = visibility
+            for (i in 0 until (view as ViewGroup).childCount) {
+                val child = view.getChildAt(i)
+                if (child is ViewGroup) {
+                    setSelection(child, visibility)
+                } else {
+                    child.isEnabled = visibility
+                }
+            }
+        }
+
 
         /*
 * show common messages
@@ -194,8 +217,8 @@ abstract class BaseActivity<T : ViewDataBinding, V : AndroidViewModel, N : ToolB
                     "", true, false, object : DialogUtil.Companion.selectOkCancelListener {
                         override fun okClick() {
                             if (isExit) {
-                              /*  SessionPreferences.clearAllPreferenceData(context)
-
+                                SessionPreferences.clearAllPreferenceData(context)
+/*
                                 var intent = LoginActivity.getIntent(context);
                                 intent.flags =
                                     Intent.FLAG_ACTIVITY_CLEAR_TOP or
@@ -315,6 +338,18 @@ abstract class BaseActivity<T : ViewDataBinding, V : AndroidViewModel, N : ToolB
     }
 
 
+    open fun getDeviceWidth(context: Context): Int {
+        val displayMetrics = DisplayMetrics()
+        (context as Activity).windowManager.defaultDisplay.getMetrics(displayMetrics)
+        val height = displayMetrics.heightPixels
+        val width = displayMetrics.widthPixels
+        return width
+    }
+
+
+    open fun pxFromDp(context: Context, dp: Float): Float {
+        return dp * context.resources.displayMetrics.density
+    }
 
 
 }

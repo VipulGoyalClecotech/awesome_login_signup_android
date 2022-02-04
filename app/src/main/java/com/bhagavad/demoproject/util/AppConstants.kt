@@ -8,7 +8,5 @@ public class AppConstants {
         val KEY_LANGUAGE = "Key_Language"
 
 
-
-        //************************
     }
 }

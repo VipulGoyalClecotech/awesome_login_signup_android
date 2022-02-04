@@ -9,7 +9,6 @@ class SessionPreferences {
     companion object {
         val PREFS_NAME = "Demo_Project"
 
-
         init {
 
         }
@@ -29,6 +28,7 @@ class SessionPreferences {
             editor.putString(key, value)
             editor.commit()
         }
+
 
 
 
@@ -66,7 +66,6 @@ class SessionPreferences {
             editor.putBoolean(key, value)
             editor.commit()
         }
-
 
         fun loadStringPref(context: Context, key: String?): String? {
             val settings: SharedPreferences
