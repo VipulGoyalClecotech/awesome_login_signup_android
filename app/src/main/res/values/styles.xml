@@ -1,21 +1,38 @@
 <resources xmlns:tools="http://schemas.android.com/tools">
+    <!-- Base application theme. -->
     <style name="AppTheme" parent="Theme.AppCompat.Light.NoActionBar">
-
         <!-- Customize your theme here. -->
         <item name="colorPrimary">@color/color_primary</item>
         <item name="colorPrimaryDark">@color/color_primary</item>
         <item name="colorAccent">@color/color_primary</item>
+        <item name="android:windowAnimationStyle">@style/CustomActivityAnimation</item>
+        <item name="android:windowBackground">@android:color/transparent</item>
+        <item name="android:statusBarColor" tools:targetApi="lollipop">@color/color_primary
+        </item>
+        <!--  For full screen view  -->
         <item name="windowActionBar">false</item>
         <item name="windowNoTitle">true</item>
-        <item name="android:windowTranslucentStatus" tools:targetApi="kitkat">false</item>
-        <item name="android:windowDrawsSystemBarBackgrounds" tools:targetApi="lollipop">true</item>
-        <item name="android:statusBarColor" tools:targetApi="lollipop">@color/color_primary</item>
-        <item name="android:windowTranslucentNavigation" tools:targetApi="kitkat">false</item>
-        <item name="android:homeAsUpIndicator">@drawable/back_arrow</item>
-        <item name="bottomSheetDialogTheme">@style/AppBottomSheetDialogTheme</item>
-        <item name="android:textColorHint">@color/hint_text_color</item>
-        <item name="android:windowLightStatusBar">true</item>
-        <item name="actionMenuTextAppearance">@style/MenuItemTextAppearance</item>
+        <!--    Manage view behinde status bar and bottom navigation bar    -->
+        <item name="windowActionModeOverlay">true</item>
+        <!--      manage status bar  -->
+        <!--        <item name="android:windowTranslucentStatus" tools:targetApi="kitkat">true</item>-->
+        <!--   Do not show preview when activity switches like black color or else     -->
+        <item name="android:windowDisablePreview">true</item>
+
+        <!--    Image will cover from status bar    -->
+        <!--<item name="android:windowDrawsSystemBarBackgrounds" tools:targetApi="lollipop">true</item>-->
+
+        <!--    Manage view behind from bottom navigation    -->
+        <item name="android:windowTranslucentNavigation" tools:ignore="NewApi">false</item>
+
+    </style>
+
+    <!--  Activity animation  -->
+    <style name="CustomActivityAnimation" parent="@android:style/Animation.Activity">
+        <item name="android:activityOpenEnterAnimation">@anim/slide_in_right_anim</item>
+        <item name="android:activityOpenExitAnimation">@anim/slide_out_left_anim</item>
+        <item name="android:activityCloseEnterAnimation">@anim/slide_in_left_anim</item>
+        <item name="android:activityCloseExitAnimation">@anim/slide_out_right_anim</item>
     </style>
 
     <style name="AppBottomSheetDialogTheme"

@@ -26,10 +26,10 @@ class AppUtil {
             val mainIntent = Intent(mSourceActivity, destinationClass)
             if (bundle != null) mainIntent.putExtras(bundle)
             mSourceActivity.startActivity(mainIntent)
-            mSourceActivity.overridePendingTransition(
+           /* mSourceActivity.overridePendingTransition(
                 R.anim.slide_out_left_anim,
                 R.anim.slide_in_right_anim
-            )
+            )*/
         }
 
         //these method is to start new intent for result
@@ -42,10 +42,10 @@ class AppUtil {
             val mainIntent = Intent(mSourceActivity, destinationClass)
             if (bundle != null) mainIntent.putExtras(bundle)
             mSourceActivity.startActivityForResult(mainIntent, requestCode)
-            mSourceActivity.overridePendingTransition(
+           /* mSourceActivity.overridePendingTransition(
                 R.anim.slide_in_right_anim,
                 R.anim.slide_out_left_anim
-            )
+            )*/
         }
 
         //these method is to hide keyboard

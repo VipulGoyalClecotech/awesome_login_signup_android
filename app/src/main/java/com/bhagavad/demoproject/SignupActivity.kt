@@ -63,7 +63,6 @@ class SignupActivity :  BaseActivity<ActivitySignupBinding, SignupViewModel, Too
 
     override fun loginClick() {
       finish()
-        overridePendingTransition(R.anim.slide_out_right_anim,R.anim.slide_in_left_anim);
     }
 
     override fun showLoaderOnRequest(isShowLoader: Boolean) {
