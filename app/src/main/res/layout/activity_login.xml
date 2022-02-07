@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
-<layout
-    xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:tools="http://schemas.android.com/tools">
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
 
     <data>
 
@@ -58,6 +58,7 @@
                     android:fontFamily="@font/sf_regular"
                     android:hint="@string/enter_email"
                     android:paddingTop="10dp"
+                    android:text="@={viewModel.emailStr}"
                     android:paddingBottom="10dp"
                     android:textColor="@color/black"
                     android:textColorHint="@color/grey"
@@ -95,6 +96,7 @@
                     android:fontFamily="@font/sf_regular"
                     android:hint="@string/enter_password"
                     android:paddingTop="10dp"
+                    android:text="@={viewModel.passwordStr}"
                     android:paddingBottom="10dp"
                     android:textColor="@color/black"
                     android:textColorHint="@color/grey"
@@ -127,6 +129,8 @@
                     android:padding="18dp"
                     android:soundEffectsEnabled="true"
                     android:text="@string/login"
+                    android:onClick="@{()->viewModel.loginClick()}"
+
                     android:textAllCaps="false"
                     android:textColor="@color/white"
                     android:textSize="@dimen/extra_large_text" />

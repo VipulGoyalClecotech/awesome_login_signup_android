@@ -6,7 +6,9 @@ import android.content.Intent
 import android.os.Build
 import android.os.Bundle
 import android.view.View
+import android.view.ViewGroup
 import android.view.inputmethod.InputMethodManager
+import android.widget.EditText
 import android.widget.Toast
 import com.bhagavad.demoproject.R
 
@@ -73,6 +75,24 @@ class AppUtil {
             }
         }
 
+        fun setupUI(view: View, activity: Activity?) {
+            if (view !is EditText) {
+                view.setOnTouchListener { v, event ->
+                    if (activity != null && v != null) {
+                        AppUtil.hideKeyboard(activity)
+                    }
+                    false
+                }
+            }
+
+            // If a layout container, iterate over children and seed recursion.
+            if (view is ViewGroup) {
+                for (i in 0 until view.childCount) {
+                    val innerView = view.getChildAt(i)
+                    activity?.let { setupUI(innerView, it) }
+                }
+            }
+        }
 
 
     }

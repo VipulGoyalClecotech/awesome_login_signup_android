@@ -3,6 +3,8 @@ package com.bhagavad.demoproject.viewmodalfactory
 import android.app.Application
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.ViewModelProvider
+import com.bhagavad.demoproject.dashboard.DashboardViewModel
+import com.bhagavad.demoproject.dashboard.fragment.notification.NotificationListFragmentViewModel
 
 import com.bhagavad.demoproject.login.LoginViewModel
 import com.bhagavad.demoproject.server.serverResponseNavigator
@@ -30,7 +32,12 @@ class ViewModelProviderFactory(
         else if (modelClass.isAssignableFrom(SignupViewModel::class.java)) {
             return SignupViewModel(application, serverResponse) as T
         }
-
+         else if (modelClass.isAssignableFrom(DashboardViewModel::class.java)) {
+             return DashboardViewModel(application, serverResponse) as T
+         }
+         else if (modelClass.isAssignableFrom(NotificationListFragmentViewModel::class.java)) {
+             return NotificationListFragmentViewModel(application, serverResponse) as T
+         }
         throw IllegalArgumentException("Unknown ViewModel class: " + modelClass.name) as Throwable
 
     }

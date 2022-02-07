@@ -25,9 +25,6 @@ class SignupActivity :  BaseActivity<ActivitySignupBinding, SignupViewModel, Too
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
 
-       if (getSupportActionBar() != null) {
-           getSupportActionBar()?.hide();
-       }
         initView()
 
 

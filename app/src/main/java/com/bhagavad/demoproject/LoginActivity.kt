@@ -11,10 +11,11 @@ import com.bhagavad.demoproject.databinding.ActivityLoginBinding
 import com.bhagavad.demoproject.login.LoginNavigator
 import com.bhagavad.demoproject.login.LoginViewModel
 import com.bhagavad.demoproject.toolbar.ToolBarViewModel
-import com.bhagavad.demoproject.BR
-import com.bhagavad.demoproject.R
+import androidx.lifecycle.Observer
+import com.bhagavad.demoproject.dashboard.DashboardActivity
 import com.bhagavad.demoproject.server.serverResponseNavigator
 import com.bhagavad.demoproject.util.AppUtil
+import com.bhagavad.demoproject.util.DialogUtil
 import com.bhagavad.demoproject.viewmodalfactory.ViewModelProviderFactory
 
 class LoginActivity :  BaseActivity<ActivityLoginBinding, LoginViewModel, ToolBarViewModel>(),
@@ -27,12 +28,6 @@ class LoginActivity :  BaseActivity<ActivityLoginBinding, LoginViewModel, ToolBa
         super.onCreate(savedInstanceState)
         initView()
 
-
-        if (getSupportActionBar() != null) {
-            getSupportActionBar()?.hide();
-        }
-
-
     }
 
     fun initView()
@@ -41,6 +36,18 @@ class LoginActivity :  BaseActivity<ActivityLoginBinding, LoginViewModel, ToolBa
         mActivity = this@LoginActivity
         mBinding = getViewDataBinding()
         mViewModel.setNavigator(this)
+
+        mViewModel.geResult().observe(this, Observer { result ->
+
+            if (result.equals("")) {
+
+                AppUtil.startIntent(null, mActivity, DashboardActivity::class.java)
+
+
+            } else {
+                showMessage(result)
+            }
+        })
     }
 
     override fun getBindingVariable(): Int {
@@ -50,6 +57,25 @@ class LoginActivity :  BaseActivity<ActivityLoginBinding, LoginViewModel, ToolBa
     override fun getLayoutId(): Int {
        return R.layout.activity_login
     }
+
+
+    /*
+        * show all common message
+        * */
+    fun showMessage(msg: String) {
+        DialogUtil.okCancelDialog(mContext!!,
+            getString(R.string.app_name), msg, getString(R.string.ok),
+            "", true, false, object : DialogUtil.Companion.selectOkCancelListener {
+                override fun okClick() {
+
+                }
+
+                override fun cancelClick() {
+
+                }
+            });
+    }
+
 
     override fun getViewModel(): LoginViewModel {
         mViewModel = ViewModelProvider(this, ViewModelProviderFactory(application, this))

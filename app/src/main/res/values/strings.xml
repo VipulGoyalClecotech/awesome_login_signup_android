@@ -17,4 +17,12 @@
     <string name="login">LOGIN</string>
     <string name="signup">SIGNUP</string>
     <string name="back_to_login">BACK TO LOGIN</string>
+    <string name="please_enter_email">Please enter email</string>
+    <string name="please_enter_password">Please enter password</string>
+    <string name="no_record_found">No record found</string>
+    <string name="new_update_available">Please update your application with a new version available.</string>
+    <string name="No_internet_connection">No internet connection</string>
+    <string name="session_expire_msg">Your session expire. Please login again.</string>
+
+
 </resources>

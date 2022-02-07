@@ -60,5 +60,6 @@
     <dimen name="icon_width_small">17dp</dimen>
     <dimen name="icon_height_small">17dp</dimen>
     <dimen name="toolbar_margin_top">27dp</dimen>
-
+    <dimen name="bottom_navigation_view_height">55dp</dimen>
+    <dimen name="navigation_icon_size">22dp</dimen>
 </resources>
