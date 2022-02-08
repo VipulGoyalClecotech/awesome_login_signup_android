@@ -7,10 +7,14 @@
         <entry key="app/src/main/res/drawable/selector_pharmacy_tab.xml" value="0.17" />
         <entry key="app/src/main/res/drawable/selector_user_tab.xml" value="0.17" />
         <entry key="app/src/main/res/layout/activity_dashboard.xml" value="0.10242179616548941" />
+        <entry key="app/src/main/res/layout/activity_home_detail.xml" value="0.1" />
         <entry key="app/src/main/res/layout/activity_login.xml" value="0.11548913043478261" />
         <entry key="app/src/main/res/layout/activity_signup.xml" value="0.11548913043478261" />
+        <entry key="app/src/main/res/layout/common_toolbar.xml" value="0.1" />
         <entry key="app/src/main/res/layout/dialog_ok_cancel.xml" value="0.18" />
+        <entry key="app/src/main/res/layout/fragment_home_list.xml" value="0.1" />
         <entry key="app/src/main/res/layout/fragment_notification_list.xml" value="0.10242179616548941" />
+        <entry key="app/src/main/res/layout/item_home_list.xml" value="0.1" />
         <entry key="app/src/main/res/layout/item_notification_list.xml" value="0.10040363269424823" />
         <entry key="app/src/main/res/layout/progress_loader.xml" value="0.10242179616548941" />
         <entry key="app/src/main/res/menu/menu_navigation.xml" value="0.13703703703703704" />

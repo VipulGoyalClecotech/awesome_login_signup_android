@@ -29,6 +29,9 @@
         <activity android:name=".dashboard.DashboardActivity"
             android:screenOrientation="portrait"
             android:launchMode="standard"/>
+        <activity android:name=".homedetail.HomeDetailActivity"
+            android:screenOrientation="portrait"
+            android:launchMode="standard"/>
     </application>
 
 </manifest>

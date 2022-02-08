@@ -24,5 +24,9 @@
     <string name="No_internet_connection">No internet connection</string>
     <string name="session_expire_msg">Your session expire. Please login again.</string>
 
+    <string name="home">Home</string>
+    <string name="notification">Notification</string>
+    <string name="tab3">Tab 3</string>
+    <string name="tab4">Tab 4</string>
 
 </resources>

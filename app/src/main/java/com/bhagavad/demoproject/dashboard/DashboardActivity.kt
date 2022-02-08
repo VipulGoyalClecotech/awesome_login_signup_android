@@ -14,20 +14,23 @@ import com.bhagavad.demoproject.base.BaseActivity
 import com.bhagavad.demoproject.toolbar.ToolBarViewModel
 import com.bhagavad.demoproject.BR
 import com.bhagavad.demoproject.R
+import com.bhagavad.demoproject.dashboard.fragment.HomeListFragment
 import com.bhagavad.demoproject.dashboard.fragment.NotificationListFragment
 import com.bhagavad.demoproject.databinding.ActivityDashboardBinding
 import com.bhagavad.demoproject.server.serverResponseNavigator
+import com.bhagavad.demoproject.toolbar.ToolBarNavigator
 import com.bhagavad.demoproject.viewmodalfactory.ViewModelProviderFactory
 import com.google.android.material.bottomnavigation.BottomNavigationView
 
 class DashboardActivity :  BaseActivity<ActivityDashboardBinding, DashboardViewModel, ToolBarViewModel>(),
-    DashboardNavigator, serverResponseNavigator,  BottomNavigationView.OnNavigationItemSelectedListener {
+    DashboardNavigator, serverResponseNavigator,  BottomNavigationView.OnNavigationItemSelectedListener,ToolBarNavigator {
     private lateinit var mViewModel: DashboardViewModel
     private lateinit var mBinding: ActivityDashboardBinding
     private lateinit var mContext: Context
     private lateinit var mActivity: Activity
     var mBottomTabSelectedId: Int? = null
     var mFragment: Fragment? = null
+    lateinit var mToolBarViewModel: ToolBarViewModel
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         initView()
@@ -40,10 +43,13 @@ class DashboardActivity :  BaseActivity<ActivityDashboardBinding, DashboardViewM
         mActivity = this@DashboardActivity
         mBinding = getViewDataBinding()
         mViewModel.setNavigator(this)
+        mBinding.toolBar.collapseToolBarModel = mToolBarViewModel
+        mToolBarViewModel!!.setToolBarNavigator(this)
 
         mBinding.bottomTabView.setOnNavigationItemSelectedListener(this)
         mBinding.bottomTabView.selectedItemId = mBinding.bottomTabView.menu.getItem(0).itemId
         mBinding.bottomTabView.itemIconTintList = null
+        mBinding.toolBar.tvTitle.setText(getString(R.string.home))
     }
 
     override fun getBindingVariable(): Int {
@@ -61,12 +67,14 @@ class DashboardActivity :  BaseActivity<ActivityDashboardBinding, DashboardViewM
     }
 
     override fun getToolBarViewModel(): ToolBarViewModel? {
-        return null
+        mToolBarViewModel =
+            ViewModelProvider(this, ViewModelProviderFactory(application, this)).get(
+                ToolBarViewModel::class.java
+            )
+        return mToolBarViewModel
     }
 
-    override fun createAccountClick() {
 
-    }
 
     override fun showLoaderOnRequest(isShowLoader: Boolean) {
         TODO("Not yet implemented")
@@ -114,19 +122,23 @@ class DashboardActivity :  BaseActivity<ActivityDashboardBinding, DashboardViewM
 
 
             R.id.tab1_fragment -> {
-                mFragment = NotificationListFragment.newInstance();
+                mBinding.toolBar.tvTitle.setText(getString(R.string.home))
+                mFragment = HomeListFragment.newInstance();
             }
 
             R.id.tab2_fragment -> {
+                mBinding.toolBar.tvTitle.setText(getString(R.string.notification))
                 mFragment = NotificationListFragment.newInstance();
             }
 
             R.id.tab3_fragment -> {
+                mBinding.toolBar.tvTitle.setText(getString(R.string.tab3))
                 mFragment = NotificationListFragment.newInstance();
             }
 
 
             R.id.tab4_fragment -> {
+                mBinding.toolBar.tvTitle.setText(getString(R.string.tab4))
                 mFragment = NotificationListFragment.newInstance();
             }
         }
@@ -148,6 +160,10 @@ class DashboardActivity :  BaseActivity<ActivityDashboardBinding, DashboardViewM
             return true;
         }
         return false;
+    }
+
+    override fun backClick() {
+
     }
 
 }

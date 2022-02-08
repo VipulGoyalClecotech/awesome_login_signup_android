@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
     xmlns:app="http://schemas.android.com/apk/res-auto">
 
     <data>
@@ -7,34 +8,35 @@
         <import type="android.view.View" />
 
         <variable
-            name="position"
-            type="java.lang.Integer" />
-
-
-        <variable
             name="viewModel"
-            type="com.bhagavad.demoproject.dashboard.fragment.notification.NotificationListFragmentViewModel" />
+            type="com.bhagavad.demoproject.homedetail.HomeDetailViewModel" />
+
     </data>
 
-
     <LinearLayout
-        android:id="@+id/ll_main"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_marginBottom="@dimen/margin_medium"
+        android:orientation="vertical"
         android:background="@color/white"
-        android:onClick="@{()->viewModel.listItemClick(position)}"
-        android:orientation="vertical">
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        tools:context=".homedetail.HomeDetailActivity">
+        <com.google.android.material.appbar.AppBarLayout
+            android:id="@+id/app_bar_layout"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
 
+            <include
+                android:id="@+id/tool_bar"
+                layout="@layout/common_toolbar" />
+
+        </com.google.android.material.appbar.AppBarLayout>
         <LinearLayout
-            android:layout_margin="@dimen/margin_small"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:orientation="horizontal">
+            android:orientation="vertical">
 
             <androidx.cardview.widget.CardView
-                android:layout_width="60dp"
-                android:layout_height="60dp"
+                android:layout_width="match_parent"
+                android:layout_height="250dp"
                 android:background="@color/white"
                 app:cardCornerRadius="@dimen/margin_small"
                 app:cardElevation="0dp">
@@ -46,7 +48,6 @@
                     android:layout_gravity="center"
                     android:background="@color/white"
                     android:gravity="center"
-                    android:onClick="@{()->viewModel.listItemClick(position)}"
                     android:scaleType="fitXY"
                     android:src="@drawable/default_image" />
             </androidx.cardview.widget.CardView>
@@ -57,18 +58,6 @@
                 android:layout_height="wrap_content"
                 android:layout_margin="@dimen/margin_medium"
                 android:orientation="vertical">
-
-
-                    <TextView
-                        android:visibility="gone"
-                        android:id="@+id/tv_name"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:fontFamily="@font/sf_semibold"
-                        android:text=""
-                        android:textAlignment="viewStart"
-                        android:textColor="@color/white"
-                        android:textSize="@dimen/small_text" />
 
 
 
@@ -97,12 +86,6 @@
             </LinearLayout>
 
         </LinearLayout>
-<View
-    android:layout_width="match_parent"
-    android:layout_height="1dp"
-    android:background="@color/black"
-    />
 
     </LinearLayout>
-
 </layout>

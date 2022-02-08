@@ -1,0 +1,52 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+
+    <data>
+
+        <import type="android.view.View" />
+
+        <variable
+            name="viewModel"
+            type="com.bhagavad.demoproject.dashboard.fragment.home.HomeListFragmentViewModel" />
+
+    </data>
+
+    <LinearLayout
+        android:id="@+id/ll_main"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:padding="@dimen/margin_large"
+        android:background="@color/white"
+        android:descendantFocusability="beforeDescendants"
+        android:fitsSystemWindows="false"
+        android:focusableInTouchMode="true"
+        android:orientation="vertical">
+
+
+        <androidx.recyclerview.widget.RecyclerView
+            android:id="@+id/rv_notification_list"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent" />
+
+
+        <TextView
+
+            android:id="@+id/tv_no_record"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_gravity="center"
+            android:fontFamily="@font/sf_bold"
+            android:gravity="center"
+            android:onClick="@{()->viewModel.onNoRecordClick()}"
+
+            android:text="@string/no_record_found"
+            android:textColor="@color/black"
+            android:textSize="@dimen/large_text"
+            android:visibility="gone" />
+
+
+
+    </LinearLayout>
+
+</layout>

@@ -1,6 +1,7 @@
-package com.bhagavad.demoproject.dashboard
+package com.bhagavad.demoproject.homedetail
 
 import android.app.Application
+import android.text.TextUtils
 
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
@@ -11,13 +12,10 @@ import com.bhagavad.demoproject.server.*
 
 
 
-class DashboardViewModel(application: Application, serverResponse: serverResponseNavigator) :
-    BaseViewModel<DashboardNavigator>(application) {
+class HomeDetailViewModel(application: Application, serverResponse: serverResponseNavigator) :
+    BaseViewModel<HomeDetailNavigator>(application) {
     lateinit var serverResponse: serverResponseNavigator
     var mApplication: Application
-   // lateinit var mRxApiCallHelper: RxAPICallHelper
-   // lateinit var mApiInterface: ApiInterface
-
 
     init {
         mApplication = application
@@ -33,7 +31,6 @@ class DashboardViewModel(application: Application, serverResponse: serverRespons
   * get  result live data
   * */
     fun geResult(): LiveData<String> = dataResult
-
 
 
 }
