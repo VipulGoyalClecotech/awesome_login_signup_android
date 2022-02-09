@@ -14,18 +14,17 @@ import com.bhagavad.demoproject.dashboard.fragment.home.bean.HomeListResponse
 import com.bhagavad.demoproject.databinding.ItemHomeListBinding
 
 
-
-
-class HomeListAdapter(context: Context,
-                      list:ArrayList<HomeListResponse.Data>,
-                      viewModel: HomeListFragmentViewModel,
-                      navigator: HomeListFragmentNavigator
-                             ) :
+class HomeListAdapter(
+    context: Context,
+    list: ArrayList<HomeListResponse.Data>,
+    viewModel: HomeListFragmentViewModel,
+    navigator: HomeListFragmentNavigator
+) :
     RecyclerView.Adapter<HomeListAdapter.ViewHolder>() {
     lateinit var mContext: Context
     lateinit var mNavigator: HomeListFragmentNavigator
     lateinit var mViewModel: HomeListFragmentViewModel
-    lateinit var mList:ArrayList<HomeListResponse.Data>
+    lateinit var mList: ArrayList<HomeListResponse.Data>
 
 
     init {
@@ -39,7 +38,8 @@ class HomeListAdapter(context: Context,
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ViewHolder {
         var view = DataBindingUtil.inflate<ItemHomeListBinding>(
             LayoutInflater.from(mContext),
-            R.layout.item_home_list , parent , false);
+            R.layout.item_home_list, parent, false
+        );
         return ViewHolder(view.root)
     }
 
@@ -54,8 +54,10 @@ class HomeListAdapter(context: Context,
 
         holder.binding!!.tvTopic.setText(data.description)
         holder.binding!!.tvSubject.setText(data.course)
-
-
+        if ((position % 2) == 0)
+            holder.binding!!.ivUserImage.setImageDrawable(mContext.getDrawable(R.drawable.image_1))
+        else
+            holder.binding!!.ivUserImage.setImageDrawable(mContext.getDrawable(R.drawable.image_2))
         holder.itemView.setOnClickListener(View.OnClickListener {
 
         })
@@ -65,15 +67,13 @@ class HomeListAdapter(context: Context,
 
     class ViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {
         var binding = DataBindingUtil.bind<ItemHomeListBinding>(itemView)
-        fun setViewModel(position: Int, viewModel : HomeListFragmentViewModel)
-        {
+        fun setViewModel(position: Int, viewModel: HomeListFragmentViewModel) {
             binding!!.position = position
             binding!!.viewModel = viewModel
-            binding!!.setVariable(BR.viewModel , viewModel)
+            binding!!.setVariable(BR.viewModel, viewModel)
             binding!!.executePendingBindings()
         }
     }
-
 
 
 }

@@ -17,6 +17,7 @@ import com.bhagavad.demoproject.util.DialogUtil
 import com.bhagavad.demoproject.viewmodalfactory.ViewModelProviderFactory
 import com.bhagavad.demoproject.R
 import com.bhagavad.demoproject.BR
+import com.bhagavad.demoproject.dashboard.fragment.home.bean.HomeListResponse
 import com.bhagavad.demoproject.databinding.ActivityHomeDetailBinding
 import com.bhagavad.demoproject.toolbar.ToolBarNavigator
 
@@ -45,11 +46,12 @@ class HomeDetailActivity :  BaseActivity<ActivityHomeDetailBinding, HomeDetailVi
 
         // Get Intent Data
         val bundle = intent.extras
-        var courseStr = bundle!!.getString("course")!!
-        var descriptionStr = bundle!!.getString("description")!!
+        var data=bundle!!.getParcelable<HomeListResponse.Data>("data")
+       // var courseStr = bundle!!.getString("course")!!
+       // var descriptionStr = bundle!!.getString("description")!!
 
-        mBinding.tvTopic.setText(descriptionStr)
-        mBinding.tvSubject.setText(courseStr)
+        mBinding.tvTopic.setText(data!!.description)
+        mBinding.tvSubject.setText(data!!.course)
 
     }
 

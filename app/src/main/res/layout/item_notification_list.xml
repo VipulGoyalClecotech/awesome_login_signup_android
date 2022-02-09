@@ -48,7 +48,7 @@
                     android:gravity="center"
                     android:onClick="@{()->viewModel.listItemClick(position)}"
                     android:scaleType="fitXY"
-                    android:src="@drawable/default_image" />
+                    android:src="@drawable/user" />
             </androidx.cardview.widget.CardView>
 
 

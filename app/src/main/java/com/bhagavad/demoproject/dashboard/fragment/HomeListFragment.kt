@@ -207,8 +207,8 @@ class HomeListFragment :
 
     override fun listItemClick(position: Int) {
         val bundle = Bundle()
-        bundle.putString("course", mClassesList.get(position).course)
-        bundle.putString("description", mClassesList.get(position).description)
+
+        bundle.putParcelable("data", mClassesList.get(position))
 
         AppUtil.startIntent(bundle, mActivity, HomeDetailActivity::class.java)
 
